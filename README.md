@@ -26,5 +26,17 @@ An interactive, enterprise-grade data analytics application built with Python an
 *   **Data Visualization:** Plotly Express (Interactive 2D Scatter Plots), Matplotlib
 
 ---
+## Scientific Methodology
 
- Scientific Methodology & Algorithm Design1. Feature Preprocessing & ScalingReal estate parameters operate on vastly mismatched scalar dimensions (e.g., Price listed in millions versus BHK listed in single digits). To prevent the distance math from being dominated entirely by pricing columns, data is passed through a standard normal distribution scaler:$$Z = \frac{x - \mu}{\sigma}$$2. Dimensionality Reduction (PCA)To visually display multi-dimensional property rows on a 2D dashboard monitor, Principal Component Analysis calculates eigenvectors to rotate the data into maximized orthogonal directions of variance, projecting high-dimensional metrics into a clean (x, y) coordinate array.3. K-Means vs. DBSCAN Hyperparameter TuningK-Means ($k$): Partitioning focuses on minimize the within-cluster sum-of-squares (Inertia). Ideal for classifying broad market brackets.DBSCAN ($\epsilon$, $\text{min\_samples}$): Scans dense neighborhoods. Points with fewer than min_samples within a radius of eps ($\epsilon$) fail the density-connection rule and are cleanly separated into a specialized Noise category (Cluster -1).The 1-20 Slider Guardrail: The min_samples slider is restricted to a maximum of 20 to strictly align with machine learning heuristics ($2 \times \text{Dimensions}$). Pushing this value higher causes severe over-smoothing, which breaks up smaller, highly exclusive luxury real estate sectors and accidentally misclassifies normal niche properties as noise.
+ 1. Feature Preprocessing & Scaling
+Real estate parameters operate on vastly mismatched scalar dimensions (e.g., Price listed in millions versus BHK listed in single digits). To prevent the distance math from being dominated entirely by pricing columns, data is passed through a standard normal distribution scaler (StandardScaler), which centers the data to a mean of 0 and a standard deviation of 1.
+
+2. Dimensionality Reduction (PCA)
+To visually display multi-dimensional property rows on a 2D dashboard monitor, Principal Component Analysis calculates eigenvectors to rotate the data into maximized orthogonal directions of variance, projecting high-dimensional metrics into a clean (x, y) coordinate array.
+
+3. K-Means vs. DBSCAN Hyperparameter Tuning
+K-Means (k): Partitioning focuses on minimizing the within-cluster sum-of-squares (Inertia). Ideal for classifying broad market brackets.
+
+DBSCAN (Radius / Min Samples): Scans dense neighborhoods. Points with fewer than the specified minimum sample threshold within a given radius fail the density-connection rule and are cleanly separated into a specialized Noise category (Cluster -1).
+
+The 1-20 Slider Guardrail: The minimum samples slider is restricted to a maximum of 20 to strictly align with machine learning heuristics (2 * Dimensions). Pushing this value higher causes severe over-smoothing, which breaks up smaller, highly exclusive luxury real estate sectors and accidentally misclassifies normal niche properties as noise.
