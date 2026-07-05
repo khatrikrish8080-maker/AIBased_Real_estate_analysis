@@ -1,9 +1,11 @@
-🏡 NCR Real Estate Analytics & Price Prediction Suite
+## 🏡 NCR Real Estate Analytics & Price Prediction Suite
+
 An enterprise-grade Data Science and Machine Learning ecosystem designed to analyze, cluster, segment, and estimate residential property prices across the National Capital Region (NCR).
 
 This project bridges the gap between complex unsupervised market analysis and real-time supervised predictive inference. It uses K-Means and DBSCAN to isolate structural tiers and anomalies, projects high-dimensional metrics using PCA, and trains a robust Random Forest Regressor to power an interactive Streamlit deployment.
 
-🛠️ Architecture & Tech Stack
+##🛠️ Architecture & Tech Stack
+
 User Interface: Streamlit (Layouts, Metrics, Dynamic State Controls)
 
 Data Pipeline & Parsing: Python, Pandas, NumPy
@@ -22,7 +24,7 @@ Data Visualization: Plotly Express (Interactive 2D Scatter Plots), Matplotlib
 
 Model Serialization: Pickle
 
-📂 Project Architecture
+## 📂 Project Architecture
 Plaintext
 ├── Delhi_v2.csv          # Raw scraped dataset containing listing and raw addresses
 ├── Delhi_processed.csv   # Unified dataset exported with engineered locality and price metrics
@@ -32,7 +34,9 @@ Plaintext
 ├── rf_model.pkl          # Saved weights of the trained Random Forest Regressor
 ├── scaler.pkl            # Trained StandardScaler mathematical parameters
 └── README.md             # Project documentation
-🚀 Core Product Capabilities
+
+##🚀 Core Product Capabilities
+
 1. Unsupervised Exploration Dashboard (unsupervised.py)
 Dual-Engine Clustering Strategy:
 
@@ -65,7 +69,8 @@ Seamless UI Mapping: Automatically maps human-readable textual neighborhood sele
 
 Inference Guardrails: Transforms live user inputs through the pre-fit training scaler to eliminate deployment data drift before feeding the Random Forest Regressor.
 
-🔬 Scientific Methodology
+##🔬 Scientific Methodology
+
 Feature Preprocessing & Scaling
 Real estate parameters operate on vastly mismatched scalar dimensions (e.g., Price listed in millions versus BHK listed in single digits). To prevent the distance math from being dominated entirely by pricing columns, data is passed through a standard normal distribution scaler (StandardScaler), which centers the data to a mean of 0 and a standard deviation of 1.
 
@@ -79,7 +84,8 @@ DBSCAN (Radius / Min Samples): Scans dense neighborhoods. Points with fewer than
 
 The 1-20 Slider Guardrail: The minimum samples slider is restricted to a maximum of 20 to strictly align with machine learning heuristics (2×Dimensions). Pushing this value higher causes severe over-smoothing, which breaks up smaller, highly exclusive luxury real estate sectors and accidentally misclassifies normal niche properties as noise.
 
-🏁 Installation & Step-by-Step Execution
+##🏁 Installation & Step-by-Step Execution
+
 1. Environment Setup
 Clone your workspace repository and ensure your Python virtual environment is fully active:
 
