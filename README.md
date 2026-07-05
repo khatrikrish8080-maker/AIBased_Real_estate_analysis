@@ -4,7 +4,7 @@ An enterprise-grade Data Science and Machine Learning ecosystem designed to anal
 
 This project bridges the gap between complex unsupervised market analysis and real-time supervised predictive inference. It uses K-Means and DBSCAN to isolate structural tiers and anomalies, projects high-dimensional metrics using PCA, and trains a robust Random Forest Regressor to power an interactive Streamlit deployment.
 
-##🛠️ Architecture & Tech Stack
+## 🛠️ Architecture & Tech Stack
 
 User Interface: Streamlit (Layouts, Metrics, Dynamic State Controls)
 
@@ -26,7 +26,7 @@ Model Serialization: Pickle
 
 ## 📂 Project Architecture
 
-'''Plaintext
+```Plaintext
 ├── Delhi_v2.csv          # Raw scraped dataset containing listing and raw addresses
 ├── Delhi_processed.csv   # Unified dataset exported with engineered locality and price metrics
 ├── unsupervised.py       # Market segmentation, PCA dimensionality reduction, and outlier detection
@@ -35,6 +35,7 @@ Model Serialization: Pickle
 ├── rf_model.pkl          # Saved weights of the trained Random Forest Regressor
 ├── scaler.pkl            # Trained StandardScaler mathematical parameters
 └── README.md             # Project documentation
+```
 
 ## 🚀 Core Product Capabilities
 
