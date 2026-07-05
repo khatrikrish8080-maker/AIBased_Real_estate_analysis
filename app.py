@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 
-from model import run_ml_pipeline
+from unsupervised import run_ml_pipeline
 
 st.set_page_config(
     page_title="Delhi Real Estate Clustering Dashboard",
