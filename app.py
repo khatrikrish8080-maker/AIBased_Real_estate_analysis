@@ -1,7 +1,9 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
-
+import pickle
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.preprocessing import StandardScalar
 from unsupervised import run_ml_pipeline
 
 st.set_page_config(
@@ -145,6 +147,42 @@ st.dataframe(
         "Market Status": "AI Verdict"
     }
 )
+
+with open('rf_model.pkl', 'rb') as model_file:
+    model = pickle.load(model_file)
+    
+with open('scaler.pkl', 'rb') as scaler_file:
+    scaler = pickle.load(scaler_file)
+
+df = pd.read_csv("Delhi_processed.csv")
+
+st.title("🏡 NCR Real Estate Price Predictor")
+st.write("Enter the property details below to estimate the price.")
+
+locality_mapping = df.drop_duplicates(subset=['locality']).set_index('locality')['Locality_prices'].to_dict()
+
+selected_locality = st.selectbox("Select Locality", options=list(locality_mapping.keys()))
+
+locality_numeric_price = locality_mapping[selected_locality]
+
+area = st.number_input("Total Area (in sq ft)", min_value=100, max_value=10000, value=1200, step=50)
+bedrooms = st.slider("Number of Bedrooms", min_value=1, max_value=8, value=2)
+bathrooms = st.slider("Number of Bathrooms", min_value=1, max_value=8, value=2)
+
+if st.button("Predict Price"):
+    
+    raw_inputs = np.array([[locality_numeric_price, area, bedrooms, bathrooms]])
+
+    scaled_inputs = scaler.transform(raw_inputs)
+    
+    predicted_price = model.predict(scaled_inputs)[0]
+    
+    st.markdown("---")
+    if predicted_price >= 10000000:
+        st.success(f"🏡 **Estimated Property Price:** ₹{predicted_price / 10000000:.2f} Crores")
+    else:
+        st.success(f"🏡 **Estimated Property Price:** ₹{predicted_price / 100000:.2f} Lakhs")
+
 
 
 
