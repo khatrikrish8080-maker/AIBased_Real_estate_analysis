@@ -25,7 +25,8 @@ Data Visualization: Plotly Express (Interactive 2D Scatter Plots), Matplotlib
 Model Serialization: Pickle
 
 ## 📂 Project Architecture
-Plaintext
+
+'''Plaintext
 ├── Delhi_v2.csv          # Raw scraped dataset containing listing and raw addresses
 ├── Delhi_processed.csv   # Unified dataset exported with engineered locality and price metrics
 ├── unsupervised.py       # Market segmentation, PCA dimensionality reduction, and outlier detection
@@ -35,7 +36,7 @@ Plaintext
 ├── scaler.pkl            # Trained StandardScaler mathematical parameters
 └── README.md             # Project documentation
 
-##🚀 Core Product Capabilities
+## 🚀 Core Product Capabilities
 
 1. Unsupervised Exploration Dashboard (unsupervised.py)
 Dual-Engine Clustering Strategy:
@@ -44,13 +45,7 @@ Macro Segmentation: Uses K-Means to divide the housing market into structural pr
 
 Micro Segmentation & Outlier Detection: Uses DBSCAN to identify organic geographic/density pockets while filtering out lone listings, typos, or fake data.
 
-Advanced Dimensionality Reduction: Utilizes PCA to compress high-dimensional real estate features (Price, Square Footage, BHK, location metrics) into optimized 2D coordinates (x 
-pca
-​
- , y 
-pca
-​
- ) for robust spatial visualization without losing variance.
+Advanced Dimensionality Reduction: Utilizes PCA to compress high-dimensional real estate features (Price, Square Footage, BHK, location metrics) into optimized 2D coordinates (x_pca , y_pca) for robust spatial visualization without losing variance.
 
 Live Hyperparameter Optimization: Integrates real-time UI sliders in a Streamlit sidebar, allowing users to modify cluster limits (k), search radius (ϵ), and density thresholds (min_samples) on the fly.
 
@@ -69,7 +64,7 @@ Seamless UI Mapping: Automatically maps human-readable textual neighborhood sele
 
 Inference Guardrails: Transforms live user inputs through the pre-fit training scaler to eliminate deployment data drift before feeding the Random Forest Regressor.
 
-##🔬 Scientific Methodology
+## 🔬 Scientific Methodology
 
 Feature Preprocessing & Scaling
 Real estate parameters operate on vastly mismatched scalar dimensions (e.g., Price listed in millions versus BHK listed in single digits). To prevent the distance math from being dominated entirely by pricing columns, data is passed through a standard normal distribution scaler (StandardScaler), which centers the data to a mean of 0 and a standard deviation of 1.
@@ -84,7 +79,7 @@ DBSCAN (Radius / Min Samples): Scans dense neighborhoods. Points with fewer than
 
 The 1-20 Slider Guardrail: The minimum samples slider is restricted to a maximum of 20 to strictly align with machine learning heuristics (2×Dimensions). Pushing this value higher causes severe over-smoothing, which breaks up smaller, highly exclusive luxury real estate sectors and accidentally misclassifies normal niche properties as noise.
 
-##🏁 Installation & Step-by-Step Execution
+## 🏁 Installation & Step-by-Step Execution
 
 1. Environment Setup
 Clone your workspace repository and ensure your Python virtual environment is fully active:
